@@ -11,4 +11,4 @@
       - fvc::div(mu*dev2(fvc::grad(U)().T()))
     );
 
-    UEqn().relax();
+    UEqn.ref().relax();
