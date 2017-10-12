@@ -1,0 +1,40 @@
+#!/bin/sh
+
+cd ${0%/*} || exit 1    # Run from this directory
+
+# Source tutorial run functions
+. $WM_PROJECT_DIR/bin/tools/RunFunctions
+
+# Function for deleting soft links
+function clear_soft_links() {
+  find ./system/ -maxdepth 1 -type l -exec rm -f {} \;
+}
+
+# Get application name
+application=`getApplication`
+
+runApplication blockMesh
+runApplication transformPoints -translate "(-0.04 0 0)"
+
+ln -sr system/mirrorMeshDict_X system/mirrorMeshDict
+runApplication mirrorMesh
+clear_soft_links
+
+ln -sr system/mirrorMeshDict_Y system/mirrorMeshDict
+runApplication mirrorMesh
+clear_soft_links
+
+cp constant/polyMesh/boundaryFixed constant/polyMesh/boundary
+
+runApplication topoSet
+runApplication setsToZones -noFlipMap
+runApplication createBaffles
+
+# Move time directory from 1 to 0
+mv 1/ 0/
+
+# Copy in the initial fields
+cp initialFields/* 0/
+
+runApplication setFields
+# runApplication $application
