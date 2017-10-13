@@ -28,15 +28,15 @@ Class
 Description
     Foam::explicitFOmembraneSoluteFvPatchScalarField
 
-    This boundary condition is designed to simulate an assymetric membrane 
+    This boundary condition is designed to simulate an asymmetric membrane
     across which a scalar is transported. This is designed to work with the
-    explicitFOmembraneSoluteVelocityFvPatchVectorField. The full boundary 
+    explicitFOmembraneSoluteVelocityFvPatchVectorField. The full boundary
     condition set up with typical values is given below:
     {
         type 	    explicitFOmembraneSolute;
         value	    uniform 0;
         U	U; 		                        // velocity field (default value of "U")
-        B	1e-7; 		                    // solute permeation coefficient 
+        B	1e-7; 		                    // solute permeation coefficient
     }
 
     The following parameters are set in the "constant/transportProperties"
@@ -44,13 +44,13 @@ Description
 
     pi_mACoeff	    pi_mACoeff	    [ 0 0 0 0 0 0 0 ]	    805.1e5;
     mu0		        mu0 		    [ 1 -1 -1 0 0 0 0 ]	    0.89e-3;
-    mu_mACoeff	    mu_mACoeff 	    [ 1 -1 -1 0 0 0 0 ] 	1.63; 
+    mu_mACoeff	    mu_mACoeff 	    [ 1 -1 -1 0 0 0 0 ] 	1.63;
     D_AB_Min	    D_AB_Min 	    [ 0 2 -1 0 0 0 0 ]	    1.45e-9;
     D_AB_Coeff	    D_AB_Coeff 	    [ 0 2 -1 0 0 0 0 ]	    1.61e-9;
-    D_AB_mACoeff	D_AB_mACoeff 	[ 0 0 0 0 0 0 0 ]	    14; 
+    D_AB_mACoeff	D_AB_mACoeff 	[ 0 0 0 0 0 0 0 ]	    14;
     rho0		    rho0		    [ 1 -3 0 0 0 0 0 ]	    997.1;
     rho_mACoeff	    rho_mACoeff	    [ 0 0 0 0 0 0 0 ]	    0.696;
- 
+
 SourceFiles
     explicitFOmembraneSoluteFvPatchScalarField.C
 
@@ -87,18 +87,18 @@ class explicitFOmembraneSoluteFvPatchScalarField
 
         //- Rejection coefficient
         scalar B_;
-    
+
         // Diffusion resistivity
         scalar K_;
 
         //- Diffusivity coefficient
-        dimensionedScalar D_AB_Min_; 
+        dimensionedScalar D_AB_Min_;
 
         //- Diffusivity coefficient
-        dimensionedScalar D_AB_Coeff_; 
+        dimensionedScalar D_AB_Coeff_;
 
         //- Diffusivity coefficient
-        dimensionedScalar D_AB_mACoeff_; 
+        dimensionedScalar D_AB_mACoeff_;
 
         //- Density of fluid
         dimensionedScalar rho0_;
@@ -344,4 +344,3 @@ private:
 #endif
 
 // ************************************************************************* //
-

@@ -28,8 +28,8 @@ Class
 Description
     Foam::explicitFOmembraneVelocityFvPatchVectorField
 
-    This boundary condition is designed to simulate an assymetric membrane 
-    used in an forward osmosis setup. The full boundary condition set up 
+    This boundary condition is designed to simulate an asymmetric membrane
+    used in an forward osmosis setup. The full boundary condition set up
     with typical values is given below:
     {
         type 			explicitFOmembraneVelocity;
@@ -41,21 +41,21 @@ Description
         eq      	"simple"	// Simple applies to high R-values. Otherwise use
 								// "advanced" or "advancedPresDiff", for a non-zero hydraulic pressure difference, and specify B
         m_A			m_A;		// field of solute concentration as a mass fraction.
-								// Defaults to "m_A". Using "none" causes boundary 
+								// Defaults to "m_A". Using "none" causes boundary
 								// condition to ignore osmotic pressure
         slip    "noSlip"        // "noSlip" or "slip". If slip, then set alpha and kappa
         alpha   0.1;            // Slip coefficient depending on porosity and pore size
         aRelax  1               // relaxation factor for slip V
     }
 
-    The values of hydrodynamic pressure do not take gravity explicitly into 
+    The values of hydrodynamic pressure do not take gravity explicitly into
     account, so it is assumed that the membrane has a thickness of zero.
 
-    Currently only the FO (Forward Osmosis) mode is supported. The draw 
+    Currently only the FO (Forward Osmosis) mode is supported. The draw
     solution must be on the side of the porous support. The membrane acts as
     a one-way gate and will not allow flow to occur in the reverse direction.
 
- 
+
 SourceFiles
     explicitFOmembraneVelocityFvPatchVectorField.C
 
@@ -104,7 +104,7 @@ class explicitFOmembraneVelocityFvPatchVectorField
 
         //- K coefficient
         scalar K_;
-        
+
         //- Slip or noSlip
         word slipName_;
 
@@ -248,7 +248,7 @@ public:
             {
                 return K_;
             }
-           
+
             //- Return name of slip condition.
             const word& slipName() const
             {
@@ -318,10 +318,10 @@ private:
         void calcFaceMapping();
 
         //- Flux equation
-        Foam::scalar fluxEquation( const scalar&, 
-                             const scalar&, 
-                             const scalar&, 
-                             const scalar&, 
+        Foam::scalar fluxEquation( const scalar&,
+                             const scalar&,
+                             const scalar&,
+                             const scalar&,
                              const scalar& );
 
         //- Root finder used by flux calculation
@@ -337,7 +337,7 @@ private:
         //- Return Numerical Recipes style sign check
         inline static scalar checkSign(const scalar& a, const scalar& b)
         {
-            return (b >= 0 ? a < 0 : a >= 0); 
+            return (b >= 0 ? a < 0 : a >= 0);
         }
 
 
@@ -353,4 +353,3 @@ private:
 #endif
 
 // ************************************************************************* //
-
