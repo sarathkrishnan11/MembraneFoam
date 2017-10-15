@@ -76,56 +76,23 @@ class explicitFOmembraneSoluteFvPatchScalarField
 {
     // Private data
 
-        //- Transport Properties dictionary
-        IOdictionary transProps_;
-
-        //- Name of the velocity field
-        word UName_;
-
-        //- Pure water permeability
-        scalar A_;
-
-        //- Rejection coefficient
-        scalar B_;
-
-        // Diffusion resistivity
-        scalar K_;
-
-        //- Diffusivity coefficient
-        dimensionedScalar D_AB_Min_;
-
-        //- Diffusivity coefficient
-        dimensionedScalar D_AB_Coeff_;
-
-        //- Diffusivity coefficient
-        dimensionedScalar D_AB_mACoeff_;
-
-        //- Density of fluid
-        dimensionedScalar rho0_;
-
-        //- Density m_A coefficient
-        dimensionedScalar rho_mACoeff_;
-
-        //- Osmotic pressure coefficient
-        dimensionedScalar pi_mACoeff_;
-
-        //- Face indexing list
-        List<label> fm_;
-
-        //- valueInternalCoefficients
-        Field<scalar> VIC_;
-
-        //- valueBoundaryCoefficients
-        Field<scalar> VBC_;
-
-        //- gradientInternalCoefficients
-        Field<scalar> GIC_;
-
-        //- gradientBoundaryCoefficients
-        Field<scalar> GBC_;
-
-        //- current Time index
-        label curTimeIndex_;
+        IOdictionary transProps_;           //- Transport Properties dictionary
+        word UName_;                        //- Name of the velocity field
+        scalar A_;                          //- Pure water permeability
+        scalar B_;                          //- Rejection coefficient
+        scalar K_;                          //- Diffusion resistivity
+        dimensionedScalar D_AB_Min_;        //- Diffusivity coefficient
+        dimensionedScalar D_AB_Coeff_;      //- Diffusivity coefficient
+        dimensionedScalar D_AB_mACoeff_;    //- Diffusivity coefficient
+        dimensionedScalar rho0_;            //- Density of fluid
+        dimensionedScalar rho_mACoeff_;     //- Density m_A coefficient
+        dimensionedScalar pi_mACoeff_;      //- Osmotic pressure coefficient
+        List<label> fm_;                    //- Face indexing list
+        Field<scalar> VIC_;                 //- valueInternalCoefficients
+        Field<scalar> VBC_;                 //- valueBoundaryCoefficients
+        Field<scalar> GIC_;                 //- gradientInternalCoefficients
+        Field<scalar> GBC_;                 //- gradientBoundaryCoefficients
+        label curTimeIndex_;                //- current Time index
 
 public:
 
@@ -199,59 +166,15 @@ public:
 
         // Access
 
-            //- Return the Transport Properties dictionary
-            const IOdictionary& transportProperties() const
-            {
-                return transProps_;
-            }
-
-            //- Return the name of the velocity field
-            const word& UName() const
-            {
-                return UName_;
-            }
-
-            //- Return the rejection coefficient
-            scalar B() const
-            {
-                return B_;
-            }
-
-            //- Return the diffusion resistivity
-            scalar K() const
-            {
-                return K_;
-            }
-
-            //- Return the minimum diffusivity
-            dimensionedScalar D_AB_Min() const
-            {
-                return D_AB_Min_;
-            }
-
-            //- Return the main diffusivity coefficient
-            dimensionedScalar D_AB_Coeff() const
-            {
-                return D_AB_Coeff_;
-            }
-
-            //- Return the m_A diffusivity coefficient
-            dimensionedScalar D_AB_mACoeff() const
-            {
-                return D_AB_mACoeff_;
-            }
-
-            //- Return the solution density
-            dimensionedScalar rho0() const
-            {
-                return rho0_;
-            }
-
-            //- Return the density m_A coefficient
-            dimensionedScalar rho_mACoeff() const
-            {
-                return rho_mACoeff_;
-            }
+            const IOdictionary& transportProperties() const { return transProps_; }     //- Transport Properties dictionary
+            const word& UName() const { return UName_; }                                //- Name of the velocity field
+            scalar B() const { return B_; }                                             //- Rejection coefficient
+            scalar K() const { return K_; }                                             //- Diffusion resistivity
+            dimensionedScalar D_AB_Min() const { return D_AB_Min_; }                    //- Minimum diffusivity
+            dimensionedScalar D_AB_Coeff() const { return D_AB_Coeff_; }                //- Main diffusivity coefficient
+            dimensionedScalar D_AB_mACoeff() const { return D_AB_mACoeff_; }            //- M_A diffusivity coefficient
+            dimensionedScalar rho0() const { return rho0_; }                            //- Solution density
+            dimensionedScalar rho_mACoeff() const { return rho_mACoeff_; }              //- Density m_A coefficient
 
         // Mapping functions
 

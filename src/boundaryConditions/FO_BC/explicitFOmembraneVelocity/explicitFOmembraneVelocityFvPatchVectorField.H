@@ -81,53 +81,22 @@ class explicitFOmembraneVelocityFvPatchVectorField
 {
     // Private data
 
-        //- Transport Properties dictionary
-        IOdictionary transProps_;
-
-        //- Name of the pressure field
-        word pName_;
-
-        //- Name of the concentration field
-        word m_AName_;
-
-        //- "Forward" direction of membrane
-        vector forwardDirection_;
-
-        //- Name of the flux equation
-        word fluxEqName_;
-
-        //- A coefficient
-        scalar A_;
-
-        //- Solute permeation coefficient
-        scalar B_;
-
-        //- K coefficient
-        scalar K_;
-
-        //- Slip or noSlip
-        word slipName_;
-
-        //- Non-dimensioned Porosity Coefficient
-        scalar alpha_;
-
-        //- Slip relaxation
-        scalar aRelax_;
-
-        //- Osmotic pressure coefficient
-        dimensionedScalar pi_mACoeff_;
-
-        //- Solution density
-        dimensionedScalar rho0_;
-
-        //- Density m_A coefficient
-        dimensionedScalar rho_mACoeff_;
-
-        //- face indexing list
-        List<label> fm_;
-
-        //- feed-side index list
-        List<label> fs_;
+        IOdictionary transProps_;           //- Transport Properties dictionary
+        word pName_;                        //- Name of the pressure field
+        word m_AName_;                      //- Name of the concentration field
+        vector forwardDirection_;           //- "Forward" direction of membrane
+        word fluxEqName_;                   //- Name of the flux equation
+        scalar A_;                          //- A coefficient
+        scalar B_;                          //- Solute permeation coefficient
+        scalar K_;                          //- K coefficient
+        word slipName_;                     //- Slip or noSlip
+        scalar alpha_;                      //- Non-dimensioned Porosity Coefficient
+        scalar aRelax_;                     //- Slip relaxation
+        dimensionedScalar pi_mACoeff_;      //- Osmotic pressure coefficient
+        dimensionedScalar rho0_;            //- Solution density
+        dimensionedScalar rho_mACoeff_;     //- Density m_A coefficient
+        List<label> fm_;                    //- face indexing list
+        List<label> fs_;                    //- feed-side index list
 
 public:
 
@@ -199,91 +168,22 @@ public:
 
     // Member functions
 
-        // Access
+        // Access (Returns the value of the private variable)
 
-            //- Return the transport properties dictionary
-            const IOdictionary& transportProperties() const
-            {
-                return transProps_;
-            }
-
-            //- Return the name of the pressure field
-            const word& pName() const
-            {
-                return pName_;
-            }
-
-            //- Return the name of the concentration field
-            const word& m_AName() const
-            {
-                return m_AName_;
-            }
-
-            //- Return the "forward" direction of the membrane
-            const vector& forwardDirection() const
-            {
-                return forwardDirection_;
-            }
-
-            //- Return the name of the flux equation
-            const word& fluxEqName() const
-            {
-                return fluxEqName_;
-            }
-
-            //- Return the value of the A coefficient
-            scalar A() const
-            {
-                return A_;
-            }
-
-            //- Return the value of the solute permeation coefficient
-            scalar B() const
-            {
-                return B_;
-            }
-
-            //- Return the value of the K coefficient
-            scalar K() const
-            {
-                return K_;
-            }
-
-            //- Return name of slip condition.
-            const word& slipName() const
-            {
-                return slipName_;
-            }
-
-            //- Return the value of the alpha
-            scalar alpha() const
-            {
-                return alpha_;
-            }
-
-            //- Return the value of the slip relaxation factor
-            scalar aRelax() const
-            {
-                return aRelax_;
-            }
-
-            //- Return the osmotic pressure coefficient
-            dimensionedScalar pi_mACoeff() const
-            {
-                return pi_mACoeff_;
-            }
-
-            //- Return the fluid density
-            dimensionedScalar rho0() const
-            {
-                return rho0_;
-            }
-
-            //- Return the density m_A coefficient
-            dimensionedScalar rho_mACoeff() const
-            {
-                return rho_mACoeff_;
-            }
+            const IOdictionary& transportProperties() const { return transProps_; }     //- Transport properties dictionary
+            const word& pName() const { return pName_; }                                //- Name of the pressure field
+            const word& m_AName() const { return m_AName_; }                            //- Name of the concentration field
+            const vector& forwardDirection() const { return forwardDirection_; }        //- "forward" direction of the membrane
+            const word& fluxEqName() const { return fluxEqName_; }                      //- Name of the flux equation
+            scalar A() const { return A_; }                                             //- Value of the A coefficient
+            scalar B() const { return B_; }                                             //- Value of the solute permeation coefficient
+            scalar K() const { return K_; }                                             //- Value of the K coefficient
+            const word& slipName() const { return slipName_; }                          //- Return name of slip condition.
+            scalar alpha() const { return alpha_; }                                     //- Value of the alpha
+            scalar aRelax() const { return aRelax_; }                                   //- Value of the slip relaxation factor
+            dimensionedScalar pi_mACoeff() const { return pi_mACoeff_; }                //- Osmotic pressure coefficient
+            dimensionedScalar rho0() const { return rho0_; }                            //- Fluid density
+            dimensionedScalar rho_mACoeff() const { return rho_mACoeff_; }              //- Density m_A coefficient
 
         // Mapping functions
 

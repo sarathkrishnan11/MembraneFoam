@@ -28,23 +28,23 @@ Class
 Description
     Foam::explicitROmembraneVelocityFvPatchVectorField
 
-    this boundary condition is designed to simulate a membrane 
-    across which the velocity is set by the pressure difference calculated 
-    from the previous timestep. The concentration can also be set. The full 
+    this boundary condition is designed to simulate a membrane
+    across which the velocity is set by the pressure difference calculated
+    from the previous timestep. The concentration can also be set. The full
     boundary condition set up with typical values is given below:
     {
         type 	explicitROmembraneVelocity;
         value	uniform (0 0 0);// initialisation value
         K	2e-10;		// K coefficient
         m_A	none;		// field of concentration in moles (can be set
-                                // to "none" or left out if the osmotic 
+                                // to "none" or left out if the osmotic
                                 // pressure is not to taken into account
     }
     Density changes across the membrane are taken into account.
 
-    The values of hydrodynamic pressure do not take gravity explicitly into 
+    The values of hydrodynamic pressure do not take gravity explicitly into
     account, so it is assumed that the membrane has a thickness of zero.
- 
+
 SourceFiles
     explicitROmembraneVelocityFvPatchVectorField.C
 
@@ -70,29 +70,14 @@ class explicitROmembraneVelocityFvPatchVectorField
 {
     // Private data
 
-        //- Transport Properties dictionary
-        IOdictionary transProps_;
-
-        //- Name of the pressure field
-        word pName_;
-
-        //- Name of the concentration field
-        word m_AName_;
-
-        //- K coefficient
-        scalar K_;
-
-        //- Osmotic pressure coefficient
-        dimensionedScalar pi_mACoeff_;
-
-        //- Solution density
-        dimensionedScalar rho0_;
-
-        //- Density m_A coefficient
-        dimensionedScalar rho_mACoeff_;
-
-        //- face indexing list
-        List<label> fm_;
+        IOdictionary transProps_;           //- Transport Properties dictionary
+        word pName_;                        //- Name of the pressure field
+        word m_AName_;                      //- Name of the concentration field
+        scalar K_;                          //- K coefficient
+        dimensionedScalar pi_mACoeff_;      //- Osmotic pressure coefficient
+        dimensionedScalar rho0_;            //- Solution density
+        dimensionedScalar rho_mACoeff_;     //- Density m_A coefficient
+        List<label> fm_;                    //- face indexing list
 
 public:
 
@@ -170,48 +155,13 @@ public:
             }
 
         // Access
-
-            //- Return the transport properties dictionary
-            const IOdictionary& transportProperties() const
-            {
-                return transProps_;
-            }
-
-            //- Return the name of the pressure field
-            const word& pName() const
-            {
-                return pName_;
-            }
-
-            //- Return the name of the concentration field
-            const word& m_AName() const
-            {
-                return m_AName_;
-            }
-
-            //- Return the value of the K coefficient
-            scalar K() const
-            {
-                return K_;
-            }
-
-            //- Return the osmotic pressure coefficient
-            dimensionedScalar pi_mACoeff() const
-            {
-                return pi_mACoeff_;
-            }
-
-            //- Return the fluid density
-            dimensionedScalar rho0() const
-            {
-                return rho0_;
-            }
-
-            //- Return the density m_A coefficient
-            dimensionedScalar rho_mACoeff() const
-            {
-                return rho_mACoeff_;
-            }
+            const IOdictionary& transportProperties() const { return transProps_; }     //- Transport properties dictionary
+            const word& pName() const { return pName_; }                                //- Name of the pressure field
+            const word& m_AName() const { return m_AName_; }                            //- Name of the concentration field
+            scalar K() const { return K_; }                                             //- Value of the K coefficient
+            dimensionedScalar pi_mACoeff() const { return pi_mACoeff_; }                //- Osmotic pressure coefficient
+            dimensionedScalar rho0() const { return rho0_; }                            //- Fluid density
+            dimensionedScalar rho_mACoeff() const { return rho_mACoeff_; }              //- Density m_A coefficient
 
         // Mapping functions
 
