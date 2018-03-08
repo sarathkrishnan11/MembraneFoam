@@ -4,11 +4,11 @@ cd ${0%/*} || exit 1    # Run from this directory
 
 # Source tutorial run functions
 . $WM_PROJECT_DIR/bin/tools/RunFunctions
-
+value=1
+value=`cat .loop` 
 # Function for deleting soft links
 clear_soft_links() 
 { 
-   value=1
   #find ./system/ -maxdepth 1 -type l -exec rm -f {} \;
    mv log.mirrorMesh output/log.mirrormesh"$value"
    rm system/mirrorMeshDict
