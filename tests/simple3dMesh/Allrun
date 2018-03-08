@@ -6,8 +6,13 @@ cd ${0%/*} || exit 1    # Run from this directory
 . $WM_PROJECT_DIR/bin/tools/RunFunctions
 
 # Function for deleting soft links
-function clear_soft_links() {
-  find ./system/ -maxdepth 1 -type l -exec rm -f {} \;
+clear_soft_links() 
+{ 
+   value=1
+  #find ./system/ -maxdepth 1 -type l -exec rm -f {} \;
+   mv log.mirrorMesh output/log.mirrormesh"$value"
+   rm system/mirrorMeshDict
+   value=$((value+1))
 }
 
 # Get application name
@@ -16,15 +21,15 @@ application=`getApplication`
 runApplication blockMesh
 runApplication transformPoints -translate "(-0.04 0 0)"
 
-ln -sr system/mirrorMeshDict_X system/mirrorMeshDict
+cp system/mirrorMeshDict_X system/mirrorMeshDict
 runApplication mirrorMesh
 clear_soft_links
 
-ln -sr system/mirrorMeshDict_Y system/mirrorMeshDict
+cp system/mirrorMeshDict_Y system/mirrorMeshDict
 runApplication mirrorMesh
 clear_soft_links
 
-cp constant/polyMesh/boundaryFixed constant/polyMesh/boundary
+cp system/boundaryFixed constant/polyMesh/boundary
 
 runApplication topoSet
 runApplication setsToZones -noFlipMap
